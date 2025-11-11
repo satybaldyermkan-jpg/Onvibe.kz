@@ -1,48 +1,99 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Onvibe.kz | Интернет-магазин</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Onvibe.kz - Онлайн магазин</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  h1 {
+    color: #2c3e50;
+  }
+  .product {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .product h2 {
+    margin-top: 0;
+    color: #34495e;
+  }
+  .btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+  }
+  .btn:hover {
+    background: #2980b9;
+  }
+  /* Анимация для сообщения */
+  .message {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    margin-top: 10px;
+    color: green;
+  }
+  .message.show {
+    opacity: 1;
+  }
+</style>
 </head>
 <body>
-  <header>
-    <div class="logo">Onvibe.kz</div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="catalog.html">Каталог</a></li>
-        <li><a href="about.html">О нас</a></li>
-        <li><a href="contacts.html">Контакты</a></li>
-      </ul>
-      <div class="burger">&#9776;</div>
-    </nav>
-  </header>
 
-  <section class="hero animate__animated animate__fadeIn">
-    <h1>Добро пожаловать в Onvibe.kz</h1>
-    <p>Стиль. Качество. Тренд.</p>
-    <a href="catalog.html" class="btn">Перейти в каталог</a>
-  </section>
+<header>
+  <h1>Onvibe.kz — Онлайн магазин</h1>
+</header>
 
-  <section class="features">
-    <div class="feature animate__animated animate__fadeInUp">
-      <h3>Быстрая доставка</h3><p>Доставим по всему Казахстану за 2–5 дней.</p>
-    </div>
-    <div class="feature animate__animated animate__fadeInUp">
-      <h3>Отличное качество</h3><p>Только проверенные бренды и материалы.</p>
-    </div>
-    <div class="feature animate__animated animate__fadeInUp">
-      <h3>Поддержка 24/7</h3><p>Отвечаем в любое время дня и ночи.</p>
-    </div>
-  </section>
+<div class="product">
+  <h2>Товар 1</h2>
+  <p>Описание товара 1.</p>
+  <button class="btn" onclick="buyProduct('Товар 1')">Купить</button>
+  <div id="msg1" class="message"></div>
+</div>
 
-  <footer>
-    <p>© 2025 Onvibe.kz | Создано при поддержке Ермукана </p>
-  </footer>
-  <script src="js/script.js"></script>
+<div class="product">
+  <h2>Товар 2</h2>
+  <p>Описание товара 2.</p>
+  <button class="btn" onclick="buyProduct('Товар 2')">Купить</button>
+  <div id="msg2" class="message"></div>
+</div>
+
+<script>
+  function buyProduct(productName) {
+    // Найдем элемент сообщения для этого товара
+    let msgId = productName === 'Товар 1' ? 'msg1' : 'msg2';
+    let msgElem = document.getElementById(msgId);
+    
+    // Показать сообщение
+    msgElem.textContent = `Спасибо за покупку ${productName}!`;
+    msgElem.classList.add('show');
+    
+    // Через 3 секунды скрыть сообщение
+    setTimeout(() => {
+      msgElem.classList.remove('show');
+    }, 3000);
+  }
+</script>
+
 </body>
 </html>
